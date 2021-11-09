@@ -1,0 +1,12 @@
+{ "type": "FeatureCollection",
+    "features": [
+    { "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": [-122.4078, 37.7941]},
+        "properties": {"name": "Chinatown"}
+    },
+    { "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": [114.1694, 22.3193]},
+        "properties": {"name": "Hong Kong"}
+    }
+   ]
+}
