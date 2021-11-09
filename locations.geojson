@@ -2,11 +2,21 @@
     "features": [
     { "type": "Feature",
         "geometry": {"type": "Point", "coordinates": [-122.4078, 37.7941]},
-        "properties": {"name": "Chinatown"}
+        "properties": {"name": "Chinatown",
+        "story": "Ah Fong Wood Chun (馮活泉) was Grandpa Fong to your great grandmother. He made a fortune in San Francisco."
+        }
     },
     { "type": "Feature",
         "geometry": {"type": "Point", "coordinates": [114.1694, 22.3193]},
-        "properties": {"name": "Hong Kong"}
+        "properties": {"name": "Hong Kong",
+        "story": "He returned to Hong Kong after he lost his fortune and adopted Fong Lai Kam(馮麗琴), Grandma Saw's mother."
+        }
+    },
+    { "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": [113.5439, 22.1987]},
+        "properties": {"name": "Macau",
+        "story": "Great-great Grandpa Fong took Lai Kam and his wife to Macau before World War II."
+        }
     }
    ]
 }
