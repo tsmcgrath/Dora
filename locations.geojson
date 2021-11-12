@@ -57,7 +57,13 @@
     { "type": "Feature",
         "geometry": {"type": "Point", "coordinates": [113.2644, 23.1291]},
         "properties": {"name": "Canton (Guangzhou)",
-        "story": "Once World War II ended, Great-great Grandpa Fong took his family back to Canton."
+        "story": "World War II ended in the summer of 1945 and Great-great Grandpa Fong took his family back to Canton."
+        }
+    },
+    { "type": "Feature",
+        "geometry": {"type": "Point", "coordinates": [113.5439, 22.1987]},
+        "properties": {"name": "Macau",
+        "story": "In May, 1962 the family moved back to Macau."
         }
     },
     { "type": "Feature",
