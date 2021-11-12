@@ -24,6 +24,10 @@
  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
  crossorigin=""></script>
+
+ <!--- Geojson script -->
+ <script src="https://tsmcgrath.github.io/Dora/dloc.js"></script>
+ 
  <style>
     body {
         padding: 0;
@@ -60,23 +64,7 @@
 	    maxZoom: 20,
 	    ext: 'png'
     }).addTo(mymap);
-
-    // loading GeoJSON file - Here my html and usa_adm.geojson file resides in same folder
-    var places = $.ajax({
-      url:"https://tsmcgrath.github.io/Dora/lifelocations.geojson",
-      dataType: "json",
-      success: console.log("Data successfully loaded!"),
-      error: function (xhr) {
-      alert(xhr.statusText)
-      }
-    })
-
-    // load GeoJSON from an external file
-    $.getJSON("https://tsmcgrath.github.io/Dora/lifelocations.geojson",function(data){
-    // add GeoJSON layer to the map once the file is loaded
-    L.geoJson(data).addTo(mymap);
-    });
-
+    // Adding geojson
 
   </script>
 </body>
