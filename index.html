@@ -43,6 +43,10 @@
   <div id="map">
 
   </div>
+        <!-- Add jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
+
     <script>
       
 
@@ -59,15 +63,13 @@
 	    ext: 'png'
     }).addTo(mymap);
 
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', 'lifelocations.geojson');
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.responseType = 'json';
-    xhr.onload = function() {
-        if (xhr.status !== 200) return
-        L.geoJSON(xhr.response).addTo(mymap);
-    };
-    xhr.send();
+    // loading GeoJSON file - Here my html and usa_adm.geojson file resides in same folder
+    $.ajax.getJSON("lifelocations.geojson",function(data){
+    // L.geoJson function is used to parse geojson file and load on to map
+    L.geoJson(data).addTo(mymap);
+    });
+
+
 
   </script>
 </script>
