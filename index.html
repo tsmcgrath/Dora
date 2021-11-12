@@ -64,11 +64,15 @@
     }).addTo(mymap);
 
     // loading GeoJSON file - Here my html and usa_adm.geojson file resides in same folder
-    $.ajax.getJSON("lifelocations.geojson",function(data){
-    // L.geoJson function is used to parse geojson file and load on to map
-    L.geoJson(data).addTo(mymap);
-    });
-
+    $.ajax({
+    url:<URL to data>,
+    dataType: "json",
+    success: console.log("Data successfully loaded!"),
+    error: function (xhr) {
+    alert(xhr.statusText)
+    }
+    }).done(function(data) {
+    })
 
 
   </script>
