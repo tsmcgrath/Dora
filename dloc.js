@@ -81,4 +81,3 @@ var dloc = { "type": "FeatureCollection",
     }
    ]
 }
-}
