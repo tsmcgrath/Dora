@@ -15,8 +15,6 @@
   <meta property="og:description" content="A simple HTML5 Template for new projects.">
   <meta property="og:image" content="image.png">
 
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -47,7 +45,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 
-    <script>
+  <script>
       
 
 
@@ -64,18 +62,22 @@
     }).addTo(mymap);
 
     // loading GeoJSON file - Here my html and usa_adm.geojson file resides in same folder
-    $.ajax({
-    url:<"https://tsmcgrath.github.io/Dora/lifelocations.geojson">,
-    dataType: "json",
-    success: console.log("Data successfully loaded!"),
-    error: function (xhr) {
-    alert(xhr.statusText)
-    }
-    }).done(function(data) {
+    var places = $.ajax({
+      url:"https://tsmcgrath.github.io/Dora/lifelocations.geojson",
+      dataType: "json",
+      success: console.log("Data successfully loaded!"),
+      error: function (xhr) {
+      alert(xhr.statusText)
+      }
     })
+
+    // load GeoJSON from an external file
+    $.getJSON("https://tsmcgrath.github.io/Dora/lifelocations.geojson",function(data){
+    // add GeoJSON layer to the map once the file is loaded
+    L.geoJson(data).addTo(mymap);
+    });
 
 
   </script>
-</script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-{ "type": "FeatureCollection",
+var dloc = { "type": "FeatureCollection",
     "features": [
         { "type": "Feature",
             "geometry": {"type": "Point", "coordinates": [112.9644, 22.7654]},
@@ -80,4 +80,5 @@
         }
     }
    ]
+}
 }
