@@ -66,19 +66,12 @@
     }).addTo(mymap);
     // Adding geojson
     // L.geoJson(dloc).addTo(mymap);
-    L.geoJson(dloc, {
-        style: function(feature) {
-            return {
-                color: feature.properties.color,
-                fillOpacity: 0.5
-            };
-        }
-    }).addTo(mymap);
-    function onEachFeature(feature, layer) {
+    L.geoJson(dloc).addTo(mymap);
     // does this feature have a property named name?
     if (feature.properties && feature.properties.name) {
         layer.bindPopup(feature.properties.name);
     }
+    function onEachFeature(feature, layer) {
 }
   </script>
 </body>
