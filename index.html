@@ -5,14 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>A Basic HTML5 Template</title>
-  <meta name="description" content="A simple HTML5 Template for new projects.">
+  <title>Dora Saw's Life Locations</title>
+  <meta name="description" content="A simple map of life locations for Dora Saw.">
   <meta name="author" content="SitePoint">
 
-  <meta property="og:title" content="A Basic HTML5 Template">
+  <meta property="og:title" content="Dora Saw's Life Locations">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
-  <meta property="og:description" content="A simple HTML5 Template for new projects.">
+  <meta property="og:description" content="Dora Saw's Life Locations.">
   <meta property="og:image" content="image.png">
 
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -65,7 +65,21 @@
 	    ext: 'png'
     }).addTo(mymap);
     // Adding geojson
-
+    // L.geoJson(dloc).addTo(mymap);
+    L.geoJson(dloc, {
+        style: function(feature) {
+            return {
+                color: feature.properties.color,
+                fillOpacity: 0.5
+            };
+        }
+    }).addTo(mymap);
+    function onEachFeature(feature, layer) {
+    // does this feature have a property named name?
+    if (feature.properties && feature.properties.name) {
+        layer.bindPopup(feature.properties.name);
+    }
+}
   </script>
 </body>
 </html>
