@@ -21,40 +21,47 @@
   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
   crossorigin=""/>
    <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
- integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
- crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
 
- <!--- Geojson script -->
- <script src="https://tsmcgrath.github.io/Dora/dloc.js"></script>
- 
- <style>
-    body {
-        padding: 0;
-        margin: 0;
-    }
-    html, body, #map {
-        height: 100%;
-        width: 100%;
-    }
+  <!--Load jquery> -->
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <style>
+      body {
+          padding: 0;
+          margin: 0;
+      }
+      html, body, #map {
+          height: 100%;
+          width: 100%;
+      }
 </style>
 </head>
 
 <body>
-  <!-- your content here... -->
+  <!-- your content here... --> 
+
   <div id="map">
 
   </div>
-        <!-- Add jQuery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
-
   <script>
-      
 
 
     var mymap = L.map('map').setView([43.0, 180.0], 3);
 
+    // Set the icon for the marker
+    var greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+  });
+
+L.marker([51.5, -0.09], {icon: greenIcon}).addTo(mymap);
 
 
     var Stamen_TonerLite = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
@@ -64,15 +71,19 @@
 	    maxZoom: 20,
 	    ext: 'png'
     }).addTo(mymap);
-    // Adding geojson
-    // L.geoJson(dloc).addTo(mymap);
-    L.geoJson(dloc).addTo(mymap);
-    // does this feature have a property named name?
-    if (feature.properties && feature.properties.name) {
-        layer.bindPopup(feature.properties.name);
-    }
-    function onEachFeature(feature, layer) {
-}
+
+    // load GeoJSON from an external file
+    $.getJSON("lifelocations.geojson",function(data){
+      // add GeoJSON layer to the map once the file is loaded
+      //L.geoJson(data).addTo(mymap);
+      L.geoJson(data, {
+        onEachFeature: function (feature, layer) {
+          label = feature.properties.name,
+          layer.bindPopup(feature.properties.story);
+        }
+      }).addTo(mymap);
+    });
+
   </script>
 </body>
 </html>
