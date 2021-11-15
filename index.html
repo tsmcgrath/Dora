@@ -79,6 +79,7 @@ L.marker([51.5, -0.09], {icon: greenIcon}).addTo(mymap);
       L.geoJson(data, {
         onEachFeature: function (feature, layer) {
           label = feature.properties.name,
+          icon: greenIcon,
           layer.bindPopup(feature.properties.story);
         }
       }).addTo(mymap);
